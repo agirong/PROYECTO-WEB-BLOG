@@ -1,0 +1,146 @@
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog de Café</title>
+    <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="stylesheet" href="CSS/Styles.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin="">
+    </script>
+</head>
+<body>
+
+    
+    <header class="site-header">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="index.html">
+                    <h1 class="cafe">Blog<span>DeCafé</span></h1>
+                </a>
+                <nav class="navegacion cafe">
+                    <a href="nosotros.html">Nosotros</a>
+                    <a href="cursos.html">Cursos</a>
+                    <a href="contacto.html">Contacto</a>
+                    <a href="ubicacion.html">Ubicación</a>
+                </nav> 
+            </div>   
+        </div>   
+  
+    </header>
+
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $('#ventanaModal').modal('show');
+        });
+    </script>
+
+    <div class="modal" tabindex="-1" id="ventanaModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="content-titulo-ubi">
+        <h2 class="centrar-texto-ubi">Ubicación de Finca Las Botijas</h2>
+      </div>
+
+    </div>
+    <div class="content-mapa">
+        <div class="mapa" id="mapid" style="height: 500px; width: 500px;" >
+            <script>
+                
+                var mymap = L.map('mapid').setView([14.357327167784973, -87.40097802186119], 19);
+                
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 12,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+            }).addTo(mymap);
+    
+    
+            var marker = L.marker([14.357327167784973, -87.40097802186119]).addTo(mymap);
+    
+            var circle = L.circle([14.357327167784973, -87.40097802186119], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 1000
+                }).addTo(mymap);
+    
+                var polygon = L.polygon([
+                    [14.365886918766908, -87.39747981007619],
+                    [14.349012666928372, -87.40210998212156],
+                    [14.361828670590464, -87.40872451361497]
+                ]).addTo(mymap);
+    
+                marker.bindPopup("<b>FINCA LAS BOTIJAS</b><br>Cafe Don Abel.").openPopup();
+                circle.bindPopup("Periferia.");
+                polygon.bindPopup("Area.");
+    
+    
+                //objeto 
+                var popup = L.popup()
+                .setLatLng([14.357327167784973, -87.40097802186119])
+                .setContent("Cafe Don Abel.")
+                .openOn(mymap);
+            </script>
+    
+        </div>   
+        
+    </div>
+
+    <div class="content-desc">
+        <p class="desc-ubi">Uno de los factores que aporta las delicadas y exquisitas notas de sabor de Café Don Abel
+            es su ubicación especial en la Aldea Las Botijas que se encuentra a 1,550 MSNM en la zona
+            montañosa ubicada entre los departamentos de Comayagua y Francisco Morazán. </p>
+        
+    </div>
+        
+    
+    <footer class="site-footer no-margin">
+        <div class="contenedor">
+            <div class="barra  no-margin">
+            <p>Blog<span>DeCafé</span></p>
+            
+                <nav class="navegacion no-margin">
+                    <a href="/">Nosotros</a>
+                    <a href="/">Cursos</a>
+                    <a href="/">Contacto</a>
+                    <a href="/ubicacion.html">Ubicación</a>
+                </nav> 
+                </div>
+        </div>
+    
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script> 
+</body>
+</html>
